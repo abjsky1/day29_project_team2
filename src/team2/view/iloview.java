@@ -24,7 +24,7 @@ public class iloview {
 
     private InventoryController ic = InventoryController.getInstance();
 
-    // private ReservationController resc = ReservationController.getInstance();
+    private ReservationController resc = ReservationController.getInstance();
 
     private OrderController oc = OrderController.getInstance();
 
@@ -295,6 +295,59 @@ public class iloview {
     /* ------------------------------------------------------------------------- */
 
     // [2] 재고파트 부탁드립니다.
+
+    public void inventoryRun() {
+
+        while (true) {
+
+            System.out.println("\n========== 재고관리 ==========");
+            System.out.print("1발주넣기 2재고조회 3발주조회 4발주취소 5돌아가기");
+            System.out.println("\n===========================");
+            String ch = scan.next();
+
+            if (ch.equals("1")) {
+                inventoryOrder();
+            } else if (ch.equals("2")) {
+            } else if (ch.equals("3")) {
+            } else if (ch.equals("4")) {
+            }
+
+            else if (ch.equals("5")) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            } else {
+                System.out.println("잘못된 입력입니다.");
+            }
+
+        }
+
+    }
+
+    // [2-1] 발주넣기
+
+    public void inventoryOrder() {
+
+        System.out.print("발주할 메뉴의 번호를 입력하세요. ");
+        int menuNo = scan.nextInt();
+        System.out.print("발주할 메뉴의 수량를 입력하세요. ");
+        int qty = scan.nextInt();
+
+        InventoryDto inventoryDto = new InventoryDto(menuNo, qty);
+
+        boolean result = ic.inventoryOrder(inventoryDto);
+
+        if (result) {
+            System.out.println("발주 성공");
+        } else {
+            System.out.println("발주 실패");
+        }
+    }
+
+    // [2-2] 재고조회
+
+    // [2-3] 발주조회
+
+    // [2-4] 발주취소
 
     /* ------------------------------------------------------------------------- */
 
