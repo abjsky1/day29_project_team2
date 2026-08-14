@@ -1,7 +1,6 @@
 package team2.model.dao;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 
 public class BaseDao {
@@ -14,6 +13,7 @@ public class BaseDao {
     private void connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+
             conn = DriverManager.getConnection(url, user, password);
         } catch (Exception e) {
             System.out.println("DB연동 실패" + e);
