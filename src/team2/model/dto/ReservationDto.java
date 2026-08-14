@@ -1,13 +1,13 @@
 package team2.model.dto;
 
-public class reservationDto {
+public class ReservationDto {
     int reservNo;
     String telNo;
     int people;
 
-    public reservationDto(){}
+    public ReservationDto(){}
 
-    public reservationDto(int reservNo, String telNo, int people) {
+    public ReservationDto(int reservNo, String telNo, int people) {
         this.reservNo = reservNo;
         this.telNo = telNo;
         this.people = people;
