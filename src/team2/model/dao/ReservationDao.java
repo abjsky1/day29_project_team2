@@ -39,11 +39,15 @@ public class ReservationDao extends BaseDao{
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 ReservationDto reservationDto = new ReservationDto();
-                reservationDto.setReservNo();
+                reservationDto.setReservNo(rs.getInt("reservNo"));
+                reservationDto.setTelNo(rs.getString("telNo"));
+                reservationDto.setPeople(rs.getInt("people"));
+                reservList.add(reservationDto);
             }
         } catch (SQLException e) {
             System.out.println("예외 발생 " + e);
         }
+        return reservList;
     }
 
     public boolean reservUpdate(String telNo, int people) {
