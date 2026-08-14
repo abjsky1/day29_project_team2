@@ -64,7 +64,7 @@ public class iloview {
     // [1] 주문파트 부탁드립니다.
 
 
-    public void orderScreen(){
+    /*public void orderScreen(){
         System.out.println("=============");
         System.out.println("1. 주문 2. 주문확인 3. 주문수정 4. 주문삭제 5. 돌아가기");
         System.out.print("선택: "); int ch = scan.nextInt();
@@ -124,7 +124,7 @@ public class iloview {
         boolean result = oc.delete(no);
         if (result) {System.out.println("삭제성공");}
         else {System.out.println("삭제실패");}
-    }
+    }*/
 
 
     /* ------------------------------------------------------------------------- */
@@ -191,6 +191,7 @@ public class iloview {
             System.out.println("\n========== 예약관리 ==========");
             System.out.print("1.예약등록 2.예약조회 3.예약수정 4.예약취소 5.돌아가기");
             System.out.println("\n===========================");
+            System.out.print("선택 > ");
             String ch = scan.next();
 
             if (ch.equals("1")) {reservSave();}
