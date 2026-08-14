@@ -13,14 +13,11 @@ import team2.model.dto.ReivewDto;
 
 public class iloview {
 
-    private iloview() {
-    }
+    private iloview(){}
 
     private static final iloview instance = new iloview();
 
-    public static iloview getInstance() {
-        return instance;
-    }
+    public static iloview getInstance() {return instance;}
 
     private InventoryController ic = InventoryController.getInstance();
 
@@ -28,7 +25,7 @@ public class iloview {
 
     private OrderController oc = OrderController.getInstance();
 
-    private ReviewController revc = ReviewController.getInstance();*/
+    private ReviewController revc = ReviewController.getInstance();
 
     private Scanner scan = new Scanner(System.in);
 
@@ -92,62 +89,6 @@ public class iloview {
         }
     }
 
-    private void reservDelete() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        boolean result = resc.reservDelete(telNo);
-        if (result){
-            System.out.println("삭제 성공");
-        } else {
-            System.out.println("삭제 실패");
-        }
-    }
-
-    public void reservSave() {
-        System.out.print("예약할 전화번호 입력 : ");
-        String telNo = scan.next();
-        System.out.print("예약할 인원 수 입력 : ");
-        int people = scan.nextInt();
-        ReservationDto reservationDto = new ReservationDto(0, telNo, people);
-        boolean result = resc.reservSave(reservationDto);
-        if (result){
-            System.out.println("등록 성공");
-        } else {
-            System.out.println("등록 실패");
-        }
-
-    }
-
-    private void reservFindAll() {
-        ArrayList<ReservationDto> reservList = resc.reservFindAll();
-        for (ReservationDto reserv : reservList) {
-            System.out.println(reserv.getReservNo() + ". " + reserv.getTelNo() + " : " + reserv.getPeople());
-        }
-    }
-
-    private void reservUpdate() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        System.out.print("수정할 인원수 입력 : ");
-        int people = scan.nextInt();
-        boolean result = resc.reservUpdate(telNo, people);
-        if (result){
-            System.out.println("수정 성공");
-        } else {
-            System.out.println("수정 실패");
-        }
-    }
-
-    private void reservDelete() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        boolean result = resc.reservDelete(telNo);
-        if (result){
-            System.out.println("삭제 성공");
-        } else {
-            System.out.println("삭제 실패");
-        }
-    }
 
     /* ------------------------------------------------------------------------- */
 
@@ -261,6 +202,11 @@ public class iloview {
 
 
     // [2-2] 재고조회
+
+    public void inventoryFindAll(){
+
+        
+    }
 
 
 
