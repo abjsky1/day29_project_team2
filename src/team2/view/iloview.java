@@ -26,9 +26,9 @@ public class iloview {
 
     private ReservationController resc = ReservationController.getInstance();
 
-    private OrderController oc = OrderController.getInstance();
+    /*private OrderController oc = OrderController.getInstance();*/
 
-    private ReviewController revc = ReviewController.getInstance();*/
+    private ReviewController revc = ReviewController.getInstance();
 
     private Scanner scan = new Scanner(System.in);
 
@@ -43,7 +43,7 @@ public class iloview {
 
             if (ch.equals("1")) {}
             else if (ch.equals("2")) {inventoryRun();}
-            else if (ch.equals("3")) {}
+            else if (ch.equals("3")) {reservation();}
             else if (ch.equals("4")) {ReviewMenu();}
 
             else if (ch.equals("5")) {
@@ -57,97 +57,7 @@ public class iloview {
 
     }
 
-    public void reservSave() {
-        System.out.print("예약할 전화번호 입력 : ");
-        String telNo = scan.next();
-        System.out.print("예약할 인원 수 입력 : ");
-        int people = scan.nextInt();
-        ReservationDto reservationDto = new ReservationDto(0, telNo, people);
-        boolean result = resc.reservSave(reservationDto);
-        if (result){
-            System.out.println("등록 성공");
-        } else {
-            System.out.println("등록 실패");
-        }
 
-    }
-
-    private void reservFindAll() {
-        ArrayList<ReservationDto> reservList = resc.reservFindAll();
-        for (ReservationDto reserv : reservList) {
-            System.out.println(reserv.getReservNo() + ". " + reserv.getTelNo() + " : " + reserv.getPeople());
-        }
-    }
-
-    private void reservUpdate() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        System.out.print("수정할 인원수 입력 : ");
-        int people = scan.nextInt();
-        boolean result = resc.reservUpdate(telNo, people);
-        if (result){
-            System.out.println("수정 성공");
-        } else {
-            System.out.println("수정 실패");
-        }
-    }
-
-    private void reservDelete() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        boolean result = resc.reservDelete(telNo);
-        if (result){
-            System.out.println("삭제 성공");
-        } else {
-            System.out.println("삭제 실패");
-        }
-    }
-
-    public void reservSave() {
-        System.out.print("예약할 전화번호 입력 : ");
-        String telNo = scan.next();
-        System.out.print("예약할 인원 수 입력 : ");
-        int people = scan.nextInt();
-        ReservationDto reservationDto = new ReservationDto(0, telNo, people);
-        boolean result = resc.reservSave(reservationDto);
-        if (result){
-            System.out.println("등록 성공");
-        } else {
-            System.out.println("등록 실패");
-        }
-
-    }
-
-    private void reservFindAll() {
-        ArrayList<ReservationDto> reservList = resc.reservFindAll();
-        for (ReservationDto reserv : reservList) {
-            System.out.println(reserv.getReservNo() + ". " + reserv.getTelNo() + " : " + reserv.getPeople());
-        }
-    }
-
-    private void reservUpdate() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        System.out.print("수정할 인원수 입력 : ");
-        int people = scan.nextInt();
-        boolean result = resc.reservUpdate(telNo, people);
-        if (result){
-            System.out.println("수정 성공");
-        } else {
-            System.out.println("수정 실패");
-        }
-    }
-
-    private void reservDelete() {
-        System.out.print("예약된 전화번호 입력 : ");
-        String telNo = scan.next();
-        boolean result = resc.reservDelete(telNo);
-        if (result){
-            System.out.println("삭제 성공");
-        } else {
-            System.out.println("삭제 실패");
-        }
-    }
 
     /* ------------------------------------------------------------------------- */
 
@@ -276,69 +186,70 @@ public class iloview {
     /* ------------------------------------------------------------------------- */
     
     // [3] 예약파트 부탁드립니다.
+    public void reservation() {
+        while (true){
+            System.out.println("\n========== 예약관리 ==========");
+            System.out.print("1.예약등록 2.예약조회 3.예약수정 4.예약취소 5.돌아가기");
+            System.out.println("\n===========================");
+            String ch = scan.next();
 
-    public void reservSave() {
+            if (ch.equals("1")) {reservSave();}
+            else if (ch.equals("2")) {reservFindAll();}
+            else if (ch.equals("3")) {reservUpdate();}
+            else if (ch.equals("4")) {reservDelete();}
+
+            else if (ch.equals("5")) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            } else { System.out.println("잘못된 입력입니다."); }
+
+        }
+    }
+    public void reservSave () {
+        Scanner scan = new Scanner(System.in);
         System.out.print("예약할 전화번호 입력 : ");
         String telNo = scan.next();
         System.out.print("예약할 인원 수 입력 : ");
         int people = scan.nextInt();
         ReservationDto reservationDto = new ReservationDto(0, telNo, people);
         boolean result = resc.reservSave(reservationDto);
-        if (result){
+        if (result) {
             System.out.println("등록 성공");
         } else {
             System.out.println("등록 실패");
         }
-
     }
 
-    private void reservFindAll() {
+    public void reservFindAll () {
         ArrayList<ReservationDto> reservList = resc.reservFindAll();
         for (ReservationDto reserv : reservList) {
             System.out.println(reserv.getReservNo() + ". " + reserv.getTelNo() + " : " + reserv.getPeople());
         }
     }
 
-    private void reservUpdate() {
+    public void reservUpdate () {
         System.out.print("예약된 전화번호 입력 : ");
         String telNo = scan.next();
         System.out.print("수정할 인원수 입력 : ");
         int people = scan.nextInt();
         boolean result = resc.reservUpdate(telNo, people);
-        if (result){
+        if (result) {
             System.out.println("수정 성공");
         } else {
             System.out.println("수정 실패");
         }
     }
 
-    private void reservDelete() {
+    public void reservDelete () {
         System.out.print("예약된 전화번호 입력 : ");
         String telNo = scan.next();
         boolean result = resc.reservDelete(telNo);
-        if (result){
+        if (result) {
             System.out.println("삭제 성공");
         } else {
             System.out.println("삭제 실패");
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
