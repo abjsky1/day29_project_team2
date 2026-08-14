@@ -2,17 +2,20 @@ package team2.view;
 
 import java.util.Scanner;
 
+import team2.controller.InventoryController;
+import team2.model.dto.InventoryDto;
+
 public class iloview {
 
     private iloview() {}
     private static final iloview instance = new iloview();
     public static iloview getInstance() { return instance; }
 
-    private InventoryController invc = InventoryController.getInstance();
+    private InventoryController ic = InventoryController.getInstance();
 
     private ReservationController resc = ReservationController.getInstance();
 
-    private OrderController ordc = OrderController.getInstance();
+    private OrderController oc = OrderController.getInstance();
 
     private ReviewController revc = ReviewController.getInstance();
 
@@ -70,10 +73,26 @@ public class iloview {
     
     // [2] 재고파트 부탁드립니다.
 
+    // [2-1] 발주넣기
+
+    public void inventoryOrder(){
+
+        System.out.print("발주할 메뉴의 번호를 입력하세요. "); int menuNo = scan.nextInt();
+        System.out.print("발주할 메뉴의 수량를 입력하세요. "); int qty = scan.nextInt();
+
+        InventoryDto inventoryDto = new InventoryDto(menuNo, qty);
+    }
+
+
+    // [2-2] 재고조회
 
 
 
+    // [2-3] 발주조회
 
+
+
+    // [2-4] 발주취소
 
 
 

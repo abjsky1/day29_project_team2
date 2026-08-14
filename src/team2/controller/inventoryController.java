@@ -1,5 +1,15 @@
 package team2.controller;
 
-public class inventoryController {
+import team2.model.dao.InventoryDao;
+
+public class InventoryController {
+
+    private InventoryController(){}
+    private static final InventoryController instance = new InventoryController();
+    public static InventoryController getInstance(){ return instance; }
+
+    //[*] MVC패턴 흐름의 dao 싱글톤 호출
+    private InventoryDao id = InventoryDao.getInstance();
+
 
 }
