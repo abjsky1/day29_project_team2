@@ -66,7 +66,7 @@ public class iloview {
         System.out.print("예약할 인원 수 입력 : ");
         int people = scan.nextInt();
         ReservationDto reservationDto = new ReservationDto(0, telNo, people);
-        boolean result = resc.reservSave();
+        boolean result = resc.reservSave(reservationDto);
         if (result){
             System.out.println("등록 성공");
         } else {

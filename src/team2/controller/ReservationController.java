@@ -15,8 +15,8 @@ public class ReservationController {
     private ReservationDao resd = ReservationDao.getInstance();
 
 
-    public boolean reservSave() {
-        return resd.reservSave();
+    public boolean reservSave(ReservationDto reservationDto) {
+        return resd.reservSave(reservationDto);
     }
 
     public ArrayList<ReservationDto> reservFindAll() {
