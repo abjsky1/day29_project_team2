@@ -2,22 +2,29 @@ package team2.view;
 
 import team2.controller.ReservationController;
 import team2.model.dto.ReservationDto;
-
+import java.util.InputMismatchException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import team2.controller.InventoryController;
 import team2.model.dto.InventoryDto;
+import team2.controller.ReviewController;
+import team2.model.dto.ReivewDto;
 
 public class iloview {
 
-    private iloview() {}
+    private iloview() {
+    }
+
     private static final iloview instance = new iloview();
-    public static iloview getInstance() { return instance; }
+
+    public static iloview getInstance() {
+        return instance;
+    }
 
     private InventoryController ic = InventoryController.getInstance();
 
-    private ReservationController resc = ReservationController.getInstance();
+    // private ReservationController resc = ReservationController.getInstance();
 
     private OrderController oc = OrderController.getInstance();
 
@@ -37,15 +44,63 @@ public class iloview {
             if (ch.equals("1")) {}
             else if (ch.equals("2")) {inventoryRun();}
             else if (ch.equals("3")) {}
-            else if (ch.equals("4")) {}
+            else if (ch.equals("4")) {ReviewMenu();}
 
             else if (ch.equals("5")) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
-            } else { System.out.println("잘못된 입력입니다."); }
+            } else {
+                System.out.println("잘못된 입력입니다.");
+            }
 
         }
 
+    }
+
+    public void reservSave() {
+        System.out.print("예약할 전화번호 입력 : ");
+        String telNo = scan.next();
+        System.out.print("예약할 인원 수 입력 : ");
+        int people = scan.nextInt();
+        ReservationDto reservationDto = new ReservationDto(0, telNo, people);
+        boolean result = resc.reservSave(reservationDto);
+        if (result){
+            System.out.println("등록 성공");
+        } else {
+            System.out.println("등록 실패");
+        }
+
+    }
+
+    private void reservFindAll() {
+        ArrayList<ReservationDto> reservList = resc.reservFindAll();
+        for (ReservationDto reserv : reservList) {
+            System.out.println(reserv.getReservNo() + ". " + reserv.getTelNo() + " : " + reserv.getPeople());
+        }
+    }
+
+    private void reservUpdate() {
+        System.out.print("예약된 전화번호 입력 : ");
+        String telNo = scan.next();
+        System.out.print("수정할 인원수 입력 : ");
+        int people = scan.nextInt();
+        boolean result = resc.reservUpdate(telNo, people);
+        if (result){
+            System.out.println("수정 성공");
+        } else {
+            System.out.println("수정 실패");
+        }
+    }
+
+    private void reservDelete() {
+        System.out.print("예약된 전화번호 입력 : ");
+        String telNo = scan.next();
+        boolean result = resc.reservDelete(telNo);
+        if (result){
+            System.out.println("삭제 성공");
+        } else {
+            System.out.println("삭제 실패");
+        }
     }
 
     public void reservSave() {
@@ -98,29 +153,8 @@ public class iloview {
 
     // [1] 주문파트 부탁드립니다.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /* ------------------------------------------------------------------------- */
-    
+
     // [2] 재고파트 부탁드립니다.
 
     public void inventoryRun() {
@@ -259,29 +293,47 @@ public class iloview {
     /* ------------------------------------------------------------------------- */
 
     // [4] 리뷰파트 부탁드립니다.
+    private void ReviewMenu() {
+        while (true) {
+            try {
+                System.out.println("\n====================== 리뷰 관리 ======================");
+                System.out.print("1. 리뷰등록 2. 리뷰 조회 3. 리뷰 수정 4.리뷰 삭제 5. 돌아가기");
+                System.out.println("\n=====================================================");
+                System.out.print("선택: ");
+                int ch = scan.nextInt();
+                if (ch == 1) {
+                    reivSave();
+                } else if (ch == 2) {
 
+                } else if (ch == 3) {
+                } else if (ch == 4) {
+                } else if (ch == 5) {
+                    break;
+                }
+            } catch (InputMismatchException e) {
+                scan = new Scanner(System.in);
+                System.out.println("[다시 입력]" + e);
+            }
+        }
 
+    }
 
+    public void reivSave() {
+        System.out.println("메뉴선택: ");
+        int mno = scan.nextInt();
+        System.out.println("리뷰내용: ");
+        String reivContent = scan.next();
+        System.out.println("별점(1 ~ 5): ");
+        int reivScope = scan.nextInt();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        ReivewDto reivewDto = new ReivewDto(mno, reivContent, reivScope);
+        boolean result = revc.reivSave(reivewDto);
+        if (result) {
+            System.out.println("[안내] 등록성공");
+        } else {
+            System.out.println("[안내] 등록실패");
+        }
+    }
     /* ------------------------------------------------------------------------- */
-
 
 }
