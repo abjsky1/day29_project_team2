@@ -8,7 +8,7 @@ public class BaseDao {
     // 여러개 DAO 클래스들에게 JDBC 연동 인스턴스 상속
 
     // 1. 연동 정보
-    private String url = "jdbc:mysql://127.0.0.1:3306/mydb260813";
+    private String url = "jdbc:mysql://127.0.0.1:3306/day28pj2db";
     private String user = "root";
     private String password = "991231";
 

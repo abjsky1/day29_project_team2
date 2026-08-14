@@ -1,6 +1,7 @@
 package team2.controller;
 
 import team2.model.dao.InventoryDao;
+import team2.model.dto.InventoryDto;
 
 public class InventoryController {
 
@@ -12,4 +13,9 @@ public class InventoryController {
     private InventoryDao id = InventoryDao.getInstance();
 
 
+    public boolean inventoryOrder(InventoryDto inventoryDto){
+        boolean result = id.inventoryOrder(inventoryDto);
+        return result;
+
+    }
 }

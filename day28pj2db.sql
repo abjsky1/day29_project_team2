@@ -3,23 +3,61 @@ CREATE DATABASE day28pj2;
 USE day28pj2;
 
 CREATE TABLE inventory(
-    no int,
+    no INT,
     CONSTRAINT PRIMARY KEY(no),
-    menuName varchar(255),
-    menuQty int UNSIGNED,
-    requestQty int UNSIGNED
+    menuName VARCHAR(255)
 );
-INSERT INTO inventory(no, menuName, menuQty, requestQty) VALUES
-(1, '투움바 파스타', 8, 10),
-(2, '베이비 백 립', 5, 8),
-(3, '블랙라벨 스테이크', 4, 6),
-(4, '갈릭 립아이', 7, 5),
-(5, '퀸즈랜드 립아이', 3, 5),
-(6, '치킨 텐더 샐러드', 10, 8),
-(7, '오지 치즈 후라이즈', 6, 10),
-(8, '골드 코스트 코코넛 쉬림프', 4, 7),
-(9, '스파이시 씨푸드 알리오 올리오', 9, 6),
-(10, '초콜릿 썬더 프롬 다운 언더', 2, 5);
+
+INSERT INTO inventory(no, menuName) VALUES
+(1, '투움바 파스타'),
+(2, '베이비 백 립'),
+(3, '블랙라벨 스테이크'),
+(4, '갈릭 립아이'),
+(5, '퀸즈랜드 립아이'),
+(6, '치킨 텐더 샐러드'),
+(7, '오지 치즈 후라이즈'),
+(8, '골드 코스트 코코넛 쉬림프'),
+(9, '스파이시 씨푸드 알리오 올리오'),
+(10, '초콜릿 썬더 프롬 다운 언더');
+
+CREATE TABLE stock(
+    no INT,
+    menuQty INT UNSIGNED,
+    CONSTRAINT PRIMARY KEY(no),
+    CONSTRAINT FOREIGN KEY(no) REFERENCES inventory(no)
+);
+
+INSERT INTO stock(no, menuQty) VALUES
+(1, 8),
+(2, 5),
+(3, 4),
+(4, 7),
+(5, 3),
+(6, 10),
+(7, 6),
+(8, 4),
+(9, 9),
+(10, 2);
+
+
+CREATE TABLE request(
+    no INT,
+    requestQty INT UNSIGNED,
+    CONSTRAINT PRIMARY KEY(no),
+    CONSTRAINT FOREIGN KEY(no) REFERENCES inventory(no)
+);
+
+INSERT INTO request(no, requestQty) VALUES
+(1, 10),
+(2, 8),
+(3, 6),
+(4, 5),
+(5, 5),
+(6, 8),
+(7, 10),
+(8, 7),
+(9, 6),
+(10, 5);
 
 
 CREATE TABLE REVIEW(
