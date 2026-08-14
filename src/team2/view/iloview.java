@@ -1,5 +1,7 @@
 package team2.view;
 
+import team2.controller.ReservationController;
+
 import java.util.Scanner;
 
 public class iloview {
@@ -29,7 +31,22 @@ public class iloview {
 
             if (ch.equals("1")) {}
             else if (ch.equals("2")) {}
-            else if (ch.equals("3")) {}
+            else if (ch.equals("3")) {
+                System.out.println("1.예약등록 2.예약조회 3.예약수정 4.예약취소 ");
+                System.out.print("선택 : ");
+                int ch2 = scan.nextInt();
+                if(ch2 == 1){
+                    reservSave();
+                } else if (ch2 == 2) {
+                    reservFindAll();
+                } else if (ch2 == 3){
+                    reservUpdate();
+                } else if (ch2 == 4) {
+                    reservDelete();
+                } else {
+                    System.out.println("[잘못된 입력]");
+                }
+            }
             else if (ch.equals("4")) {}
 
             else if (ch.equals("5")) {
@@ -38,6 +55,26 @@ public class iloview {
             } else { System.out.println("잘못된 입력입니다."); }
 
         }
+
+    }
+
+    private void reservSave() {
+        System.out.print("예약할 전화번호 입력 : ");
+        String telNo = scan.next();
+        System.out.print("예약할 인원 수 입력 : ");
+        int people = scan.nextInt();
+
+    }
+
+    private void reservFindAll() {
+
+    }
+
+    private void reservUpdate() {
+
+    }
+
+    private void reservDelete() {
 
     }
 
