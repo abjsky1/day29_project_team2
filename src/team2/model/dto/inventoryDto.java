@@ -6,6 +6,8 @@ public class InventoryDto {
     private String menuName;
     private int menuQty;
     private int requestQty;
+
+    public InventoryDto(){}
     
     public InventoryDto(int no, int requestQty) {
         this.no = no;

@@ -113,3 +113,15 @@ iNsErT iNtO OrDeRs(mno, amount, pname) Values
 (1, 3, "야스오"),
 (3, 1, "야스오형"),
 (2, 4, "카타리나");
+
+
+select * from orders;
+select * from orders join inventory on orders.mno = inventory.no;
+
+update orders set mno = 1, amount = 4 where no = 1;
+
+iNsErT iNtO OrDeRs(mno, amount, pname) Values
+(3, 1, "테스트");
+DELETE from orders where no = 5;
+
+select inventory.no, menuName, menuqty from inventory join stock on inventory.no = stock.no GROUP BY no having menuqty>0;
