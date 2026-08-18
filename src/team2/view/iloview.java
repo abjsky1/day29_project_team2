@@ -205,6 +205,13 @@ public class iloview {
 
     public void inventoryFindAll(){
 
+        ArrayList<InventoryDto> result = ic.inventoryFindAll();
+
+        for( InventoryDto dto : result ){
+            System.out.printf("no. %d  ,  메뉴명 : %s  ,  재고수량 : %d", dto.getNo(), dto.getMenuName(), dto.getMenuQty());
+        }
+
+
         
     }
 

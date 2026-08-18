@@ -38,4 +38,6 @@ public class InventoryDao extends BaseDao{
 
     }
 
+
+        ArrayList<InventoryDto> list = new ArrayList<>();
 }
